@@ -12,5 +12,8 @@ namespace MyLibraryManagementSystem.Models
 
         [StringLength(200, ErrorMessage = "Logo URL cannot exceed 200 characters.")]
         public string LogoUrl { get; set; }
+
+        [StringLength(200, ErrorMessage = "Location cannot exceed 200 characters.")]
+        public string Location { get; set; }
     }
 }

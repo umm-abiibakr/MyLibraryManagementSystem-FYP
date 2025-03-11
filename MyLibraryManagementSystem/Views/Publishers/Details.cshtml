@@ -1,0 +1,44 @@
+﻿@model MyLibraryManagementSystem.Models.Publisher
+
+<h2>@Model.Name</h2>
+
+<div class="publisher-details">
+    <div class="publisher-logo">
+        @if (!string.IsNullOrEmpty(Model.LogoUrl))
+        {
+            <img src="@Model.LogoUrl" alt="@Model.Name Logo" />
+        }
+    </div>
+    <p><strong>Location:</strong> @Model.Location</p>
+    <div class="publisher-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        <a asp-action="Index" class="btn btn-primary">Back to Publishers</a>
+    </div>
+</div>
+
+<style>
+    .publisher-details {
+        background: linear-gradient(135deg, #FDF8F0, #F4A89A);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+        max-width: 600px;
+        margin: 3rem auto;
+        text-align: center;
+    }
+
+    .publisher-logo img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 50%;
+        border: 2px solid #D8C7E8;
+        margin-bottom: 1rem;
+    }
+
+    .publisher-details p {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+</style>

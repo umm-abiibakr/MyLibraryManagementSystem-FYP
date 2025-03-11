@@ -104,5 +104,14 @@ namespace MyLibraryManagementSystem.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        //show details
+        public IActionResult Details(int? id)
+        {
+            if (id == null) return NotFound();
+            var publisher = _context.Publishers.FirstOrDefault(p => p.Id == id);
+            if (publisher == null) return NotFound();
+            return View(publisher);
+        }
     }
 }

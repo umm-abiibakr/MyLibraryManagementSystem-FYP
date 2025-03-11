@@ -111,5 +111,53 @@ namespace MyLibraryManagementSystem.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-    }
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                _logger.LogWarning("Details called with null ID.");
+                return NotFound();
+            }
+            var book = _context.Books
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Include(b => b.Category)
+                .FirstOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                _logger.LogWarning("No book found with ID: {Id}", id);
+                return NotFound();
+            }
+            _logger.LogInformation("Book details retrieved: {@Book}", book);
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Borrow(int id)
+        {
+            var book = _context.Books.Find(id);
+            if (book == null || book.AvailableCopies <= 0)
+            {
+                TempData["Error"] = "Book is not available for borrowing.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Simulate borrowing by a logged-in user (hardcoded UserId=1 for now)
+            var loan = new Loan
+            {
+                BookId = id,
+                UserId = 1, // Replace with actual user logic later
+                LoanDate = DateTime.Now,
+                IsReturned = false
+            };
+            book.AvailableCopies--;
+            _context.Loans.Add(loan);
+            _context.SaveChanges();
+            TempData["Success"] = "Book borrowed successfully!";
+            return RedirectToAction(nameof(Index));
+        }
+    
+}
 }

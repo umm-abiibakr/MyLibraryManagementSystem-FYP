@@ -1,0 +1,113 @@
+﻿@model MyLibraryManagementSystem.Controllers.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-container">
+    <aside class="sidebar">
+        <h3>Library Haven</h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Books" asp-action="Index">Book Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Users" asp-action="Index">User Tracking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Loans" asp-action="Index">Borrowing System</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Publishers" asp-action="Index">Publishers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+            </li>
+        </ul>
+    </aside>
+    <main class="admin-content">
+        <h2>Welcome, Librarian</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Books</h3>
+                <p>@Model.BookCount</p>
+            </div>
+            <div class="stat-card">
+                <h3>Users</h3>
+                <p>@Model.UserCount</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Loans</h3>
+                <p>@Model.ActiveLoanCount</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<style>
+    .admin-container {
+        display: flex;
+        min-height: 80vh;
+    }
+
+    .sidebar {
+        width: 280px;
+        background: linear-gradient(135deg, #D8C7E8, #F4A89A);
+        padding: 2rem;
+        border-right: 2px solid #B76E79;
+    }
+
+        .sidebar h3 {
+            font-size: 2rem;
+            color: #FDF8F0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .sidebar .nav-link {
+            color: #FDF8F0;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+            .sidebar .nav-link:hover {
+                background-color: #B76E79;
+            }
+
+    .admin-content {
+        flex-grow: 1;
+        padding: 3rem;
+        background-color: #FDF8F0;
+    }
+
+    .stats-grid {
+        display: flex;
+        gap: 25px;
+        margin-top: 2.5rem;
+        justify-content: center;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #F4A89A, #D8C7E8);
+        border-radius: 15px;
+        padding: 2rem;
+        flex: 1;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(183, 110, 121, 0.2);
+        max-width: 200px;
+    }
+
+        .stat-card h3 {
+            font-size: 1.5rem;
+            color: #FDF8F0;
+        }
+
+        .stat-card p {
+            font-size: 2rem;
+            margin-top: 0.75rem;
+            color: #FDF8F0;
+        }
+</style>
