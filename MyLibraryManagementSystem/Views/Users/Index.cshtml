@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MyLibraryManagementSystem.Models.User>
+<h2>Users</h2>
+<p><a asp-action="Create">Create New</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            </tr>
+        }
+    </tbody>
+</table>
