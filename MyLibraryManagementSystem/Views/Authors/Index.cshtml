@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MyLibraryManagementSystem.Models.Author>
+
+<h2>Authors</h2>
+<p><a asp-action="Create" class="btn btn-primary">Add New Author</a></p>
+
+<div class="author-grid">
+    @foreach (var item in Model)
+    {
+        <div class="author-card">
+            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+            <p>@(item.Bio?.Substring(0, Math.Min(100, item.Bio.Length)) ?? "No bio available")...</p>
+            <div class="author-actions">
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .author-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 3rem;
+        justify-content: center;
+    }
+
+    .author-card {
+        width: 300px;
+        background: linear-gradient(135deg, #FDF8F0, #D8C7E8);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .author-card h3 {
+            font-size: 1.8rem;
+            color: #B76E79;
+        }
+
+        .author-card p {
+            font-size: 1rem;
+            color: #4A3C4B;
+        }
+</style>

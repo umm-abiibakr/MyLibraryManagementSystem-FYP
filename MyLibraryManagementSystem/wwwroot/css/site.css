@@ -1,31 +1,200 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    color: #4A3C4B;
+    line-height: 1.6;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Dancing Script', cursive;
+    color: #B76E79;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, #D8C7E8, #F4A89A);
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #B76E79;
+}
+
+.navbar-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #FDF8F0;
+    text-shadow: 1px 1px 2px rgba(183, 110, 121, 0.3);
+}
+
+.nav-link {
+    color: #FDF8F0 !important;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .nav-link:hover {
+        background-color: #B76E79;
+        color: #FDF8F0 !important;
+    }
+
+/* Buttons */
+.btn {
+    border-radius: 25px;
+    padding: 0.6rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #F4A89A;
+    border-color: #F4A89A;
+    color: #FDF8F0;
+}
+
+    .btn-primary:hover {
+        background-color: #E88F80;
+        border-color: #E88F80;
+        transform: scale(1.05);
+    }
+
+.btn-warning {
+    background-color: #D8C7E8;
+    border-color: #D8C7E8;
+    color: #4A3C4B;
+}
+
+    .btn-warning:hover {
+        background-color: #C9B5D9;
+        transform: scale(1.05);
+    }
+
+.btn-danger {
+    background-color: #B76E79;
+    border-color: #B76E79;
+    color: #FDF8F0;
+}
+
+    .btn-danger:hover {
+        background-color: #A55C66;
+        transform: scale(1.05);
+    }
+
+/* Book Grid */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 3rem;
+    justify-content: center;
+}
+
+.book-card {
+    width: 320px;
+    background: linear-gradient(135deg, #FDF8F0, #F4A89A);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .book-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3);
+    }
+
+.book-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-bottom: 2px solid #B76E79;
+}
+
+    .book-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+.book-card:hover .book-image img {
+    transform: scale(1.05);
+}
+
+.book-details {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+    .book-details h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #B76E79;
+    }
+
+    .book-details p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        color: #4A3C4B;
+    }
+
+.publisher-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0.75rem 0;
+}
+
+.publisher-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #D8C7E8;
+    padding: 5px;
+}
+
+.book-actions {
+    margin-top: 1.5rem;
+}
+
+/* Recommendations */
+.recommendations {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #D8C7E8, #FDF8F0);
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+    }
 }

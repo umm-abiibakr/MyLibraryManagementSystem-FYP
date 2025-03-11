@@ -1,7 +1,16 @@
 ﻿@model IEnumerable<MyLibraryManagementSystem.Models.Book>
 
-<h2>Books</h2>
-<p><a asp-action="Create" class="btn btn-primary">Create New</a></p>
+<h2>Book Catalog</h2>
+<p><a asp-action="Create" class="btn btn-primary">Add a New Treasure</a></p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 
 <div class="book-grid">
     @foreach (var item in Model)
@@ -14,92 +23,24 @@
                 }
                 else
                 {
-                    <img src="/images/default-book.jpg" alt="No image available" />
+                    <img src="/images/default-book.jpg" alt="No image" />
                 }
             </div>
             <div class="book-details">
                 <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
                 <p><strong>Author:</strong> @Html.DisplayFor(modelItem => item.Author.Name)</p>
-                <p><strong>Category:</strong> @Html.DisplayFor(modelItem => item.Category.Name)</p>
-                <div class="publisher-info">
-                    <p><strong>Publisher:</strong> @Html.DisplayFor(modelItem => item.Publisher.Name)</p>
-                    @if (!string.IsNullOrEmpty(item.Publisher.LogoUrl))
-                    {
-                        <img src="@item.Publisher.LogoUrl" alt="@item.Publisher.Name Logo" class="publisher-logo" />
-                    }
-                </div>
-                <p><strong>Language:</strong> @Html.DisplayFor(modelItem => item.Language)</p>
-                <p><strong>Available Copies:</strong> @Html.DisplayFor(modelItem => item.AvailableCopies)</p>
+                <p><strong>Status:</strong> @(item.AvailableCopies > 0 ? "Available" : "Borrowed")</p>
                 <div class="book-actions">
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                    @if (item.AvailableCopies > 0)
+                    {
+                        <form asp-action="Borrow" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-primary">Borrow</button>
+                        </form>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Show More</a>
                 </div>
             </div>
         </div>
     }
 </div>
-
-<style>
-    .book-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: flex-start;
-    }
-
-    .book-card {
-        width: 300px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .book-image {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-    }
-
-        .book-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .book-details {
-        padding: 15px;
-        flex-grow: 1;
-    }
-
-        .book-details h3 {
-            margin: 0 0 10px;
-            font-size: 1.2em;
-        }
-
-        .book-details p {
-            margin: 5px 0;
-        }
-
-    .publisher-info {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .publisher-logo {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-    }
-
-    .book-actions {
-        margin-top: 10px;
-    }
-
-        .book-actions a {
-            margin-right: 10px;
-        }
-</style>

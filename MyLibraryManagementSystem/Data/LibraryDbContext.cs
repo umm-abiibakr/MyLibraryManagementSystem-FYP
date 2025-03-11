@@ -27,13 +27,13 @@ namespace MyLibraryManagementSystem.Data
             );
 
             modelBuilder.Entity<Publisher>().HasData(
-                new Publisher { Id = 1, Name = "Darussalam", LogoUrl = "/images/darussalam-logo.png" },
-                new Publisher { Id = 2, Name = "Dar Al Taqwa", LogoUrl = "/images/dar-al-taqwa-logo.png" }
+                new Publisher { Id = 1, Name = "Darussalam", LogoUrl = "/images/darussalam-logo.png", Location = "Riyadh, Saudi Arabia" },
+                new Publisher { Id = 2, Name = "Dar Al Taqwa", LogoUrl = "/images/dar-al-taqwa-logo.png", Location = "London, UK" }
             );
 
             modelBuilder.Entity<Author>().HasData(
-                new Author { Id = 1, Name = "Imam Bukhari" },
-                new Author { Id = 2, Name = "Ibn Kathir" }
+                new Author { Id = 1, Name = "Imam Bukhari", Bio = "Renowned hadith scholar from Bukhara, compiler of Sahih Bukhari." },
+                new Author { Id = 2, Name = "Ibn Kathir", Bio = "Famous historian and exegete, author of Tafsir Ibn Kathir." }
             );
 
             // Assuming ImageUrl is already in your Book model; if not, remove it here

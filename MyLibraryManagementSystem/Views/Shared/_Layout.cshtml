@@ -3,49 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyLibraryManagementSystem</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Islamic Library</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MyLibraryManagementSystem.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a asp-area="" asp-controller="Books" asp-action="Index" class="navbar-brand">Islamic Library</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <<ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Books" asp-action="Index">Books</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Loans" asp-action="Index">Loans</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Publishers" asp-action="Index">Publishers</a>
-                            </li>
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Islamic Library</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Books" asp-action="Index">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Users" asp-action="Index">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Loans" asp-action="Index">Loans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Publishers" asp-action="Index">Publishers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
-            &copy; 2025 - MyLibraryManagementSystem - <a asp-area="" asp-controller="Books" asp-action="Privacy">Privacy</a>
+            <p>© 2025 - Islamic Library - Designed with Love & Elegance</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -54,3 +57,13 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<style>
+    .footer {
+        background: linear-gradient(135deg, #F4A89A, #D8C7E8);
+        padding: 1rem;
+        text-align: center;
+        border-top: 2px solid #B76E79;
+        color: #FDF8F0;
+    }
+</style>

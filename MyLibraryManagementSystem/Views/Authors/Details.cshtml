@@ -1,0 +1,28 @@
+﻿@model MyLibraryManagementSystem.Models.Author
+
+<h2>@Model.Name</h2>
+
+<div class="author-details">
+    <p><strong>Bio:</strong> @Model.Bio</p>
+    <div class="author-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        <a asp-action="Index" class="btn btn-primary">Back to Authors</a>
+    </div>
+</div>
+
+<style>
+    .author-details {
+        background: linear-gradient(135deg, #FDF8F0, #D8C7E8);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+        max-width: 600px;
+        margin: 3rem auto;
+    }
+
+        .author-details p {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+</style>
